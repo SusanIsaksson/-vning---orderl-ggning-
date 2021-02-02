@@ -36,11 +36,11 @@ function renderProducts(productList) {
         mainElement.appendChild(productCard)
     });
 }
-
+//funktion för att lägga till i varukorgen
 function addToCart() {
     //console.log(this.data)
     let productToAdd = this.data
-    let cart = JSON.parse(localStorage.getItem("cart"))
+    let cart = localStorage.getItem("cart")
 
     //kollar om cart är tom
 
