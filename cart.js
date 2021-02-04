@@ -68,7 +68,7 @@ function getCart() {
 }
 
 async function placeOrder() {
-    //console.log ("BEKRÄFTA ORDER")
+    console.log ("BEKRÄFTA ORDER")
 
     const cart = JSON.parse(localStorage.getItem("cart"))
     let formattedCart = cart.map((cartItem) => {
@@ -77,24 +77,26 @@ async function placeOrder() {
             quantity: cartItem.quantity
         }
     }) 
-    //console.log(formattedCart)
+    console.log(formattedCart)
 
-   const body = new FormData()
-    body.append("")
+    
+    const body = new FormData()
+    body.set("cart", JSON.stringify(formattedCart))
 
     const successStatus = await makeRequest("./api/orderReceiver.php", "POST", body)
+    console.log(successStatus)
 }
 
-async function makeRequest(path, requestMethod, body) {
+async function makeRequest(url, method, body) {
     try {
-        const response = await fetch(path, {
-            method: requestMethod,
+        const response = await fetch(url, {
+            method,
             body
         })
 
-        return response.json()
+        return await response.json()
     } catch(err) {
-        console.error(err)
+        //console.error(err)
     }
 
 }

@@ -2,9 +2,6 @@
 /*kolla om echo skrivs i consol via js-kod GET
 echo json_encode("Hello");*/
 
-/*require ("./klasser.php");
-
-
 //array med produkter 
 /* $products = [
         new Product("one", 1100, "40g"),

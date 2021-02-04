@@ -14,25 +14,28 @@ function renderProducts(productList) {
 
         let productCard = document.createElement("div")
         //lägger till en klass () för styling
-        productCard.classList.add("productCard")
+        //productCard.classList.add("productCard")
 
-        let nameElement = document.createElement("h3")
-        nameElement.innerText = product.name
+        let nameText = document.createElement("h3")
+        nameText.innerText = product.name
 
-        let priceElement = document.createElement("h5")
-        priceElement.innerText = product.price + " kr"
+        let priceText = document.createElement("h5")
+        priceText.innerText = product.price + " kr"
 
-        let weightElement = document.createElement("p")
-        weightElement.innerText = product.weight 
+        let weightText = document.createElement("p")
+        weightText.innerText = product.weight 
 
         let cartButton = document.createElement("button")
-        cartButton.innerText = "Lägg i varukorgen"
+        let buttonText = document.createElement("h5")
+        buttonText.innerText = "Lägg i varukorgen"
         cartButton.data = product
 
         addToCart.bind(cartButton)
         cartButton.addEventListener("click", addToCart)
 
-        productCard.append(nameElement, priceElement, weightElement, cartButton)
+        productCard.append(nameText, priceText, weightText, cartButton)
+        cartButton.appendChild(buttonText)
+
         mainElement.appendChild(productCard)
     });
 }
@@ -40,6 +43,7 @@ function renderProducts(productList) {
 function addToCart() {
     //console.log(this.data)
     let productToAdd = this.data
+    //console.log(productToAdd)
     let cart = localStorage.getItem("cart")
 
     //kollar om cart är tom
